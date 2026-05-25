@@ -1,0 +1,17 @@
+-- REGRAS DE NEGÓCIO APLICADAS
+-- RN01: Nenhum dado que identifique o respondente pode ser coletado
+--        (sem nome, e-mail, IP, CPF ou qualquer PII).
+-- RN02: O questionário coleta apenas: faixa etária, período de uso,
+--        razões de uso (múltipla escolha) e apps favoritos (múltipla escolha).
+-- RN03: Uma denúncia é completamente anônima e independente do questionário.
+-- RN04: Uma denúncia exige: tipo de violação, plataforma, severidade
+--        e descrição (mín. 20 chars, máx. 2000 chars).
+-- RN05: Razões de uso e apps favoritos são listas abertas armazenadas
+--        em tabelas filhas (relacionamento 1:N), pois o usuário pode
+--        marcar múltiplas opções.
+-- RN06: Campos de enum são restritos por CHECK CONSTRAINT para garantir
+--        apenas os valores aceitos pelo formulário.
+-- RN07: Todos os registros recebem created_at automático para permitir
+--        análise temporal no Dashboard.
+-- RN08: Nenhuma tabela possui chave estrangeira para outra que permita
+--        rastrear o usuário entre sessões.
